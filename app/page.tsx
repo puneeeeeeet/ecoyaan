@@ -1,11 +1,11 @@
 import { cartData } from "../lib/mockData";
 import ProductCard from "../components/ProductCard";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
 
-  const data = await new Promise((resolve) =>
-    setTimeout(() => resolve(cartData), 500)
-  );
+  const data = cartData as any;
 
   return (
     <div>
@@ -16,7 +16,7 @@ export default async function HomePage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        {data.cartItems.map((product) => (
+        {data.cartItems.map((product: any) => (
           <ProductCard
             key={product.product_id}
             product={product}
